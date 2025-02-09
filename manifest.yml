@@ -1,0 +1,13 @@
+    applications:
+    - name: i332255-neuralnarrative-e-commerce-store  # CHANGE THIS to be unique!
+      buildpacks:
+        - nodejs_buildpack
+      memory: 4G
+      instances: 1
+      disk_quota: 4G
+      routes:
+        - route: i332255-neuralnarrative-e-commerce-store.cfapps.sap.hana.ondemand.com # And change the route to match
+      env:
+        NPM_CONFIG_PRODUCTION: false
+        GENERATE_SOURCEMAP: false
+        # REACT_APP_GEMINI_API_KEY: "AIzaSyDnBpQOI2F7CrKGPA2gLtQigmoTWdZH2OQ"  <- Remove and use User Provided Services
