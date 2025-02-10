@@ -15,7 +15,7 @@
 runtime: nodejs20
 env: standard
 env_variables:
-  REACT_APP_GEMINI_API_KEY: "AIzaSyDnBpQOI2F7CrKGPA2gLtQigmoTWdZH2OQ" # Replace with your API key
+  REACT_APP_GEMINI_API_KEY: "HeyGuys2OQ" # Replace with your API key
 
 handlers:
   # serve static files
