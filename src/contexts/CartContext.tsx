@@ -1,13 +1,13 @@
 import React, { createContext, useContext, useState, ReactNode, useCallback } from 'react';
-import { PlumbingPart } from '../types/plumbing-types';
+import { NeuralNarrativeEcommercePart } from '../types/neural_narrative_ecommerce-types';
 
-interface CartItem extends PlumbingPart {
+interface CartItem extends NeuralNarrativeEcommercePart {
   quantity: number;
 }
 
 type CartContextType = {
   cartItems: CartItem[];
-  addToCart: (product: PlumbingPart) => void;
+  addToCart: (product: NeuralNarrativeEcommercePart) => void;
   removeFromCart: (productId: string) => void; // Corrected type here.
   updateQuantity: (productId: string, quantity: number) => void; // Corrected type here.
 };
@@ -17,7 +17,7 @@ const CartContext = createContext<CartContextType | undefined>(undefined);
 export const CartProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
 
-  const addToCart = useCallback((product: PlumbingPart) => {
+  const addToCart = useCallback((product: NeuralNarrativeEcommercePart) => {
     setCartItems(prevItems => {
       const existingItemIndex = prevItems.findIndex(item => item.id === product.id);
       if (existingItemIndex > -1) {

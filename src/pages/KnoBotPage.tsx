@@ -1,6 +1,6 @@
 import React, { useRef, useState } from 'react';
 import { LiveAPIProvider } from '../contexts/LiveAPIContext';
-import { PlumbingAnalyzer } from '../components/plumbing-analyzer/PlumbingAnalyzer';
+import { NeuralNarrativeEcommerceAnalyzer } from '../components/neural_narrative_ecommerce-analyzer/NeuralNarrativeEcommerceAnalyzer';
 import ControlTray from '../components/control-tray/ControlTray';
 import './knobot-page.scss';
 
@@ -36,7 +36,7 @@ export function KnoBotPage() {
                 </div>
               )}
             </div>
-            <PlumbingAnalyzer />
+            <NeuralNarrativeEcommerceAnalyzer />
           </div>
           <ControlTray
             videoRef={videoRef}

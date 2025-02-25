@@ -1,4 +1,4 @@
-export interface PlumbingPart {
+export interface NeuralNarrativeEcommercePart {
   id: string;
   name: string;
   description: string;

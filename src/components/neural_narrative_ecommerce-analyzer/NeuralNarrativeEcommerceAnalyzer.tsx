@@ -1,18 +1,19 @@
 import React, { useEffect, useState } from 'react';
 import { useLiveAPIContext } from '../../contexts/LiveAPIContext';
-import { PlumbingPart, OrderDetails, OrderResponse, Message } from '../../types/plumbing-types';
-import { PlumbingService } from '../../services/plumbing-service';
+//Updated import paths and Type names:
+import { NeuralNarrativeEcommercePart, OrderDetails, OrderResponse, Message } from '../../types/neural_narrative_ecommerce-types';
+import { NeuralNarrativeEcommerceService } from '../../services/neural_narrative_ecommerce-service';
 import classNames from 'classnames';
 import { ServerContent, LiveConfig } from '../../multimodal-live-types';
 import type { Part } from '@google/generative-ai';
-import './plumbing-analyzer.scss';
+import './neural_narrative_ecommerce-analyzer.scss';
 
 const USERNAME = 'Birbal'; // We'll replace this with proper auth later
 
-export function PlumbingAnalyzer() {
+export function NeuralNarrativeEcommerceAnalyzer() {
   const { client, connected, setConfig } = useLiveAPIContext();
   const [analysis, setAnalysis] = useState<string>('');
-  const [suggestedPart, setSuggestedPart] = useState<PlumbingPart | null>(null);
+  const [suggestedPart, setSuggestedPart] = useState<NeuralNarrativeEcommercePart | null>(null);
   const [orderDetails, setOrderDetails] = useState<Partial<OrderDetails>>({
     customerName: USERNAME,
   });
@@ -129,7 +130,7 @@ Tell me or Show me your issue as I can see through the camera, and I'll help you
     const handlePartSuggestion = async (text: string) => {
       try {
         setIsProcessing(true);
-        const part = await PlumbingService.mockCheckInventory(text);
+        const part = await NeuralNarrativeEcommerceService.mockCheckInventory(text); //Updated service call
         if (part) {
           setSuggestedPart(part);
           // Add part suggestion message
@@ -175,7 +176,7 @@ Tell me or Show me your issue as I can see through the camera, and I'll help you
         installationRequired: orderDetails.installationRequired,
       };
 
-      const response = await PlumbingService.mockPlaceOrder(order);
+      const response = await NeuralNarrativeEcommerceService.mockPlaceOrder(order); // Updated Service Call
       if (response) {
         setOrderStatus(`Order placed successfully! Order ID: ${response.orderId}`);
         setSuggestedPart(null);
@@ -212,7 +213,7 @@ Would you like me to help you with anything else?`
   };
 
   return (
-    <div className="plumbing-analyzer">
+    <div className="neural_narrative_ecommerce-analyzer">
       <div className="chat-section">
         {messages.map((message, index) => (
           <div key={index} className={`message ${message.type}`}>

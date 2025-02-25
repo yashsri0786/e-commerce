@@ -1,11 +1,11 @@
-import { PlumbingPart, OrderDetails, OrderResponse } from '../types/plumbing-types';
+import { NeuralNarrativeEcommercePart, OrderDetails, OrderResponse } from '../types/neural_narrative_ecommerce-types';
 
 // TODO: Replace with actual API URLs
-const INVENTORY_API = 'https://api.plumbingshop.com/inventory';
-const ORDER_API = 'https://api.plumbingshop.com/orders';
+const INVENTORY_API = 'https://api.nnshop.com/inventory';
+const ORDER_API = 'https://api.nnshop.com/orders';
 
-export class PlumbingService {
-  static async checkInventory(partId: string): Promise<PlumbingPart | null> {
+export class NeuralNarrativeEcommerceService {
+  static async checkInventory(partId: string): Promise<NeuralNarrativeEcommercePart | null> {
     try {
       const response = await fetch(`${INVENTORY_API}/${partId}`);
       if (!response.ok) return null;
@@ -34,50 +34,50 @@ export class PlumbingService {
   }
 
   // Mock function that always returns a relevant part with limited stock
-  static async mockCheckInventory(partDescription: string): Promise<PlumbingPart | null> {
+  static async mockCheckInventory(partDescription: string): Promise<NeuralNarrativeEcommercePart | null> {
     // Simulate API delay
     await new Promise(resolve => setTimeout(resolve, 500));
     
     // Extract key terms from description
     const description = partDescription.toLowerCase();
-    let part: PlumbingPart;
+    let part: NeuralNarrativeEcommercePart;
 
-    if (description.includes('leak') || description.includes('pipe')) {
+    if (description.includes('cooker') || description.includes('steel')) {
       part = {
-        id: 'PL001',
-        name: 'Premium Pipe Repair Kit',
-        description: 'Professional-grade pipe repair kit with reinforced coupling and sealant',
-        category: 'Repair',
-        price: 29.99,
+        id: 'PC001',
+        name: 'Premium Pressure Cooker',
+        description: 'Stainless steel pressure with 7 yrs warranty',
+        category: 'Utensil',
+        price: 79.99,
         inStock: 1,
-        imageUrl: 'pipe-repair.jpg'
+        imageUrl: 'pressure_cooker.jpg'
       };
-    } else if (description.includes('faucet') || description.includes('tap')) {
+    } else if (description.includes('pan') || description.includes('frying')) {
       part = {
-        id: 'FT002',
-        name: 'Modern Faucet Assembly',
-        description: 'Ceramic disc cartridge faucet with water-saving feature',
-        category: 'Fixtures',
-        price: 89.99,
+        id: 'FP002',
+        name: 'NonStick steel Frying Pan',
+        description: 'NonStick steel frying pan',
+        category: 'Utensil',
+        price: 39.99,
         inStock: 1,
-        imageUrl: 'faucet.jpg'
+        imageUrl: 'frying_pan.jpg'
       };
-    } else if (description.includes('drain') || description.includes('clog')) {
+    } else if (description.includes('watch') || description.includes('smart')) {
       part = {
-        id: 'DR003',
-        name: 'Professional Drain Cleaner Kit',
-        description: 'Industrial-strength drain cleaner with specialized tools',
-        category: 'Maintenance',
-        price: 45.99,
+        id: 'SM003',
+        name: 'Apple Smart watch',
+        description: 'Smart watch for kids',
+        category: 'Watch',
+        price: 345.99,
         inStock: 1,
-        imageUrl: 'drain-kit.jpg'
+        imageUrl: 'apple_watch.jpg'
       };
     } else {
       // Default part for any other description
       part = {
         id: 'GEN001',
-        name: 'Universal Plumbing Repair Kit',
-        description: 'All-in-one kit for common plumbing repairs and maintenance',
+        name: 'Neural Narrative Ecommerce',
+        description: 'All-in-one store for General items',
         category: 'General',
         price: 59.99,
         inStock: 1,
